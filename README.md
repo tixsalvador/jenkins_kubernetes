@@ -2,11 +2,15 @@
 ### Prerequisites
 - Helm
 - kubernetes
+-Dynamic NFS 
 
 ### Create namespace
 ```sh
 $ kubectl create namespace jenkins
 ```
+
+### Create Dynamic NFS
+Follow instructions here https://github.com/tixsalvador/provision-dynamic-nfs
 
 ### Install jenkins using Helm
 
