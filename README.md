@@ -9,7 +9,7 @@
 $ kubectl create namespace jenkins
 ```
 
-### Create Dynamic NFS
+### Provision Dynamic NFS
 Follow instructions here https://github.com/tixsalvador/provision-dynamic-nfs
 
 ### Install jenkins using Helm
