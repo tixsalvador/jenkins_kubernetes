@@ -62,7 +62,7 @@ spec:
 $ kubectl apply -f jenkins-service.yaml
 ```
 
-e0222f083ded47a59040edcabbd2c76a
+
 
 
 
