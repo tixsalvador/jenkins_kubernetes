@@ -1,8 +1,7 @@
 # Install jenkins on kubernetes
 ### Prerequisites
 - Helm
-- kubernetes
--Dynamic NFS 
+- Dynamic NFS
 
 ### Create namespace
 ```sh
@@ -17,13 +16,28 @@ $ kubectl create -f https://raw.githubusercontent.com/tixsalvador/provision-dyna
 $ kubectl create -f https://raw.githubusercontent.com/tixsalvador/provision-dynamic-nfs/main/deployment.yaml
 ```
 
-### Install jenkins using Helm
-
 #### Configure Helm
 ``` sh
 $ helm repo add jenkinsci https://charts.jenkins.io
 $ helm repo update
 $ helm search repo jenkinsci
+```
+
+********** NOT YET VERIFIED FROM THIS LINE *****************
+#### Configure jenkins config files
+```sh
+$ helm inspect values jenkinsci/jenkins  > jenkins.values.yaml
+
+# Edit jenkins.values.yaml
+Look for:
+serviceType: ClusterIP
+storageClass:
+Change to:
+serviceType: NodePort
+storageClass: managed-nfs-storage
+
+# Install helm using jenkins.values.yaml
+$ helm install jenkins jenkinsci/jenkins --values jenkins.values.yaml  --namespace jenkins
 ```
 
 #### Create a persistent volume
