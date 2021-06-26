@@ -16,6 +16,67 @@ $ kubectl create -f https://raw.githubusercontent.com/tixsalvador/provision-dyna
 $ kubectl create -f https://raw.githubusercontent.com/tixsalvador/provision-dynamic-nfs/main/deployment.yaml
 ```
 
+### Create Persistent Volume Claim
+```sh
+# Edit jenkins.pvc-nfs.yaml with the following values
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: jenkins-pvc
+  namespace: jenkins
+spec:
+  storageClassName: managed-nfs-storage
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 2Gi
+##################
+$ kubectl create -f jenkins-pvc-nfs.yaml
+
+## To check ###
+$ kubectl get pods,pv,pvc -A
+```
+
+### Create and deploy  Jenkins deployment file
+```sh
+$ kubectl create -f jenkins-deployment.yaml
+```
+
+### Grant access to Jenkins service
+```sh
+# Edit jenkins-service.yaml with ff values
+apiVersion: v1
+kind: Service
+metadata:
+  name: jenkins
+  namespace: jenkins
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    app: jenkins
+######################
+$ kubectl apply -f jenkins-service.yaml
+```
+
+e0222f083ded47a59040edcabbd2c76a
+
+
+
+
+
+
+
+
+
+
+
+
+
+********** NOT YET VERIFIED FROM THIS LINE *****************
 #### Configure Helm
 ``` sh
 $ helm repo add jenkinsci https://charts.jenkins.io
@@ -23,7 +84,6 @@ $ helm repo update
 $ helm search repo jenkinsci
 ```
 
-********** NOT YET VERIFIED FROM THIS LINE *****************
 #### Configure jenkins config files
 ```sh
 $ helm inspect values jenkinsci/jenkins  > jenkins.values.yaml
