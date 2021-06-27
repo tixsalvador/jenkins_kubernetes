@@ -62,6 +62,10 @@ spec:
 $ kubectl apply -f jenkins-service.yaml
 ```
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 56b80769f3d40d1642b5cc19f4331591dbb7e62b
 
 
 
