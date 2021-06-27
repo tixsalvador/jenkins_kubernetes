@@ -67,8 +67,20 @@ spec:
 $ kubectl apply -f jenkins-service.yaml
 ```
 
+<<<<<<< HEAD
 #### JENKINS UI ####
 Once connected to jenkins UI
+=======
+
+
+
+
+
+
+
+
+
+>>>>>>> 6279c52874ba2cb2c8c521ca1e6cb88646d052c9
 
 ##### Configure kubernetes credential.
 Dashboard -> Manage Jenkins -> Manage Credentials -> Jenkins -> Global Credentials
