@@ -16,6 +16,11 @@ $ kubectl create -f https://raw.githubusercontent.com/tixsalvador/provision-dyna
 $ kubectl create -f https://raw.githubusercontent.com/tixsalvador/provision-dynamic-nfs/main/deployment.yaml
 ```
 
+### Create Jenkins Service Account
+```sh
+$ kubectl create -f jenkins-sa.yaml
+```
+
 ### Create Persistent Volume Claim
 ```sh
 # Edit jenkins.pvc-nfs.yaml with the following values
@@ -62,22 +67,24 @@ spec:
 $ kubectl apply -f jenkins-service.yaml
 ```
 
-<<<<<<< HEAD
-=======
+#### JENKINS UI ####
+Once connected to jenkins UI
 
->>>>>>> 56b80769f3d40d1642b5cc19f4331591dbb7e62b
+##### Configure kubernetes credential.
+Dashboard -> Manage Jenkins -> Manage Credentials -> Jenkins -> Global Credentials
+Add Credentials
+Kind: Kubernetes Service Account
+Scope: Global
 
+##### Master Node Usage #####
+(Optional only if exist)
+To prevent master node from doing builds. Change usage policy
 
+Dashboard -> Manage Jenkins -> Manage Nodes and Clouds -> master -> Configure
+Usage: Only build jobs with label expression matching this node
 
+##### Configure Kubernetes Cloud
+Dashboard -> Manage Jenkins -> Manage Nodes and Clouds -> Configure Clouds -> Add new Cloud
 
-
-
-
-
-
-
-
-
-
-
-*
+Credential: Secret text
+Click Test Connection
