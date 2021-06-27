@@ -67,7 +67,7 @@ spec:
 $ kubectl apply -f jenkins-service.yaml
 ```
 
-#### JENKINS UI ####
+### JENKINS UI 
 Once connected to jenkins UI
 
 ##### Configure kubernetes credential.
