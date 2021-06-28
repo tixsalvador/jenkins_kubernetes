@@ -80,9 +80,9 @@ Scope: Global
 (Optional only if exist)
 To prevent master node from doing builds. Change usage policy
 
-Dashboard -> Manage Jenkins -> Configure System -> 
-Labels: master
-Usage: Only build jobs with label expression matching this node
+Dashboard -> Manage Jenkins -> Configure System ->  
+Labels: master  
+Usage: Only build jobs with label expression matching this node  
 
 ##### Configure Kubernetes Cloud
 Dashboard -> Manage Jenkins -> Manage Nodes and Clouds -> Configure Clouds -> Add new Cloud
