@@ -86,8 +86,8 @@ Usage: Only build jobs with label expression matching this node
 ##### Configure Kubernetes Cloud
 Dashboard -> Manage Jenkins -> Manage Nodes and Clouds -> Configure Clouds -> Add new Cloud
 
-Config changes
-Name: kubernetes
+Config changes  
+Name: kubernetes  
 Kubernetes URL: $(kubectl config view --minify | grep server | cut -f 2- -d ":" | tr -d " ")  
 Kubernetes server certificate key: $(kubectl get secret $(kubectl get sa jenkins -n jenkins -o jsonpath={.secrets[
 0].name}) -n jenkins -o jsonpath={.data.'ca\.crt'} | base64 --decode)  
