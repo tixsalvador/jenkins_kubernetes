@@ -96,14 +96,14 @@ Credential: Secret text
 Websocket Enable (with check)  
 Jenkins URL: http://10.10.10.10:32235  
 Pod label:  
--  Key: jenkins
--  Value: slave
-Pod Templates:  
--  Name: jenkins-slave
--  Namespace: jenkins
--  Labels: jenkins-slave
--  Usage: USe this node as much as possible
-Containers Template:  
--  Name: jenkins-slave
--  Docker image: jenkinsci/jnlp-slave
--  Working directory: /home/jenkins
+  Key: jenkins  
+  Value: slave  
+Pod Templates:    
+  Name: jenkins-slave  
+  Namespace: jenkins  
+  Labels: jenkins-slave  
+  Usage: USe this node as much as possible  
+Containers Template:   
+  Name: jenkins-slave  
+  Docker image: jenkinsci/jnlp-slave  
+  Working directory: /home/jenkins  
