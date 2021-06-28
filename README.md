@@ -88,22 +88,22 @@ Dashboard -> Manage Jenkins -> Manage Nodes and Clouds -> Configure Clouds -> Ad
 
 Config changes
 Name: kubernetes
-Kubernetes URL: $(kubectl config view --minify | grep server | cut -f 2- -d ":" | tr -d " ")
+Kubernetes URL: $(kubectl config view --minify | grep server | cut -f 2- -d ":" | tr -d " ")  
 Kubernetes server certificate key: $(kubectl get secret $(kubectl get sa jenkins -n jenkins -o jsonpath={.secrets[
-0].name}) -n jenkins -o jsonpath={.data.'ca\.crt'} | base64 --decode)
-Kubernetes Namespace: jenkins
-Credential: Secret text
-Websocket Enable (with check)
-Jenkins URL: http://10.10.10.10:32235
-Pod label:
-  Key: jenkins
-  Value: slave
-Pod Templates:
-  Name: jenkins-slave
-  Namespace: jenkins
-  Labels: jenkins-slave
-  Usage: USe this node as much as possible
-Containers Template:
-  Name: jenkins-slave
-  Docker image: jenkinsci/jnlp-slave
-  Working directory: /home/jenkins
+0].name}) -n jenkins -o jsonpath={.data.'ca\.crt'} | base64 --decode)  
+Kubernetes Namespace: jenkins  
+Credential: Secret text  
+Websocket Enable (with check)  
+Jenkins URL: http://10.10.10.10:32235  
+Pod label:  
+-  Key: jenkins
+-  Value: slave
+Pod Templates:  
+-  Name: jenkins-slave
+-  Namespace: jenkins
+-  Labels: jenkins-slave
+-  Usage: USe this node as much as possible
+Containers Template:  
+-  Name: jenkins-slave
+-  Docker image: jenkinsci/jnlp-slave
+-  Working directory: /home/jenkins
